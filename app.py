@@ -11,6 +11,8 @@ def connect_to_db():
 
 connect_to_db()
 
+#daily login page for here 
+
 def create_table():
     conn = connect_to_db()
     cursor = conn.cursor()
@@ -23,7 +25,7 @@ def create_table():
             current_topic VARCHAR(255) NOT NULL,
             in_time VARCHAR(255) NOT NULL,
             out_time VARCHAR(255) NOT NULL,
-             login_date DATE DEFAULT CURRENT_DATE
+            login_date DATE DEFAULT CURRENT_DATE
         );
     ''')
     conn.commit()
@@ -32,8 +34,8 @@ def create_table():
 
 create_table()
 
-@app.route('/', methods=['GET', 'POST'])
-def home():  
+@app.route('/DailyLogin', methods=['GET', 'POST'])
+def Daily_login():  
     if request.method == 'POST':
         name = request.form['name']
         course = request.form['course']
@@ -53,8 +55,60 @@ def home():
         cursor.close()
         conn.close()
 
-        return redirect(url_for('home'))
+        return redirect(url_for('Daily_Login'))
 
+    return render_template('DailyLogin.html')
+
+#register user page form here
+
+def create_table():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS student_data (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            mobile VARCHAR(255) NOT NULL,
+            course VARCHAR(255) NOT NULL,
+            batchtime VARCHAR(255) NOT NULL
+        );
+    ''')
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+create_table() 
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():  
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        mobile = request.form['mobile']
+        course = request.form['course']
+        batch_time = request.form['batchtime']
+        
+        conn = connect_to_db()
+        cursor = conn.cursor()
+        cursor.execute(
+            '''
+            INSERT INTO student_data (name, email, mobile, course, batchtime)
+            VALUES (%s, %s, %s, %s, %s)
+            ''', (name, email, mobile, course, batch_time)
+        )
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return redirect(url_for('register'))
+
+    return render_template('register.html')
+
+# making a home page
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
