@@ -13,7 +13,7 @@ connect_to_db()
 
 #daily login page for here 
 
-def create_table():
+def create__DaliyLogin_table():
     conn = connect_to_db()
     cursor = conn.cursor()
     cursor.execute('''
@@ -23,16 +23,16 @@ def create_table():
             course VARCHAR(255) NOT NULL,
             current_language VARCHAR(255) NOT NULL,
             current_topic VARCHAR(255) NOT NULL,
+            login_date DATE DEFAULT CURRENT_DATE,
             in_time VARCHAR(255) NOT NULL,
-            out_time VARCHAR(255) NOT NULL,
-            login_date DATE DEFAULT CURRENT_DATE
+            out_time VARCHAR(255) NOT NULL
         );
     ''')
     conn.commit()
     cursor.close()
     conn.close()
 
-create_table()
+create__DaliyLogin_table()
 
 @app.route('/DailyLogin', methods=['GET', 'POST'])
 def Daily_login():  
@@ -61,7 +61,7 @@ def Daily_login():
 
 #register user page form here
 
-def create_table():
+def create_register_table():
     conn = connect_to_db()
     cursor = conn.cursor()
     cursor.execute('''
@@ -78,7 +78,7 @@ def create_table():
     cursor.close()
     conn.close()
 
-create_table() 
+create_register_table() 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():  
