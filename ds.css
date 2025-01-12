@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins",sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+    background: url(/home/user/Downloads/log2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.main{
+    width: 420px;
+    background-color: transparent;
+    border:2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px; 
+}
+.main h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.main .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 40px 20px;
+}
+.input-box input::placeholder{
+    color: white;
+}
+
+.main .rem-box{
+    display: flex;
+    justify-content:space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+.rem-box label input{
+accent-color: white;
+margin-right: 3px;
+}
+
+.rem-box a{
+    color: white;
+    text-decoration: none;
+}
+.rem-box a:hover{
+    text-decoration: underline;
+}
+
+.main .button{
+    width: 100%;
+    height: 45px;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+.main .register-1{
+    font-size: 14.5px;
+    text-align: center;
+   margin: 20px 0 15px;
+}
+.register-1 p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-1 p a:hover{
+    text-decoration: underline;
+}
